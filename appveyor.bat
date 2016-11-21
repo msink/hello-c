@@ -5,6 +5,8 @@ set "PATH=%PATH%;C:\msys64\usr\bin"
 set build=build\%compiler%-%bit%
 mkdir %build%
 
+set
+
 if %compiler%==mingw (
   set "PATH=C:\msys64\mingw%bit%\bin;%PATH%"
   meson %build% --backend ninja
