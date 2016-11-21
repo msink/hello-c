@@ -14,7 +14,7 @@ if %compiler%==mingw (
 
 ) else if %compiler%==msvc (
   if %bit%==32 (
-    call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+    call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64_x86
     echo x86
   ) else if %bit%==64 (
     call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
