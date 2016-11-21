@@ -33,6 +33,10 @@ install:
   - ps: Start-FileDownload 'https://dl.dropboxusercontent.com/u/37517477/ninja.exe'
   - ninja --version
 
+# scripts to run before build
+before_build:
+  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - appveyor.bat
