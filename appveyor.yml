@@ -25,7 +25,7 @@ install:
   ############################################################################
   # Install Meson
   ############################################################################
-  - set set PYTHON_HOME=C:\Python35-x64
+  - set PYTHON_HOME=C:\Python35-x64
   - dir %PYTHON_HOME%
   - set PATH=%PYTHON_HOME%;%PATH%
   - python --version
