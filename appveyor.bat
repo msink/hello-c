@@ -6,7 +6,7 @@ echo Bits: %bit%
 SET build=build\%compiler%-%bit%
 mkdir %build%
 
-set
+dir C:\msys64\usr\bin
 
 if %compiler%==mingw (
   @echo on
@@ -18,5 +18,6 @@ if %compiler%==mingw (
   if %bit%==32 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
   if %bit%==64 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" amd64
   meson %build% --backend=msvc2015
-  MSBuild
+  dir %build%
+  rem MSBuild
 )
