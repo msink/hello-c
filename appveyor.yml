@@ -27,7 +27,7 @@ install:
   ############################################################################
   # Install Ninja
   ############################################################################
-  - appveyor DownloadFile "https://dl.dropboxusercontent.com/u/37517477/ninja.exe"
+  - ps: Start-FileDownload 'https://dl.dropboxusercontent.com/u/37517477/ninja.exe'
   - ninja --version
 
   ############################################################################
