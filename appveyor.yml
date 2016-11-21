@@ -19,18 +19,11 @@ environment:
 
 # scripts that run after cloning repository
 install:
-  ############################################################################
-  # Install Meson
-  ############################################################################
   - set PYTHON_HOME=C:\Python35-x64
   - set PATH=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%PATH%
   - pip3 install meson
   - meson --version
-
-  ############################################################################
-  # Install Ninja
-  ############################################################################
-  - ps: Start-FileDownload 'https://dl.dropboxusercontent.com/u/37517477/ninja.exe'
+  - cinst ninja
   - ninja --version
 
 # scripts to run before build
