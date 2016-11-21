@@ -23,21 +23,21 @@ environment:
 # scripts that run after cloning repository
 install:
   ############################################################################
-  # Install Ninja
-  ############################################################################
-  - ps: Start-FileDownload 'https://dl.dropboxusercontent.com/u/37517477/ninja.exe'
-  - ninja --version
-
-  ############################################################################
   # Install Meson
   ############################################################################
-  - dir C:/
+  - dir C:\
   - set set PYTHON_HOME=C:\python35-x64
   - python --version
   - dir -R %PYTHON_HOME%
   - set PATH=%PYTHON_HOME%;%PATH%
   - pip3 install meson
   - meson --version
+
+  ############################################################################
+  # Install Ninja
+  ############################################################################
+  - ps: Start-FileDownload 'https://dl.dropboxusercontent.com/u/37517477/ninja.exe'
+  - ninja --version
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
