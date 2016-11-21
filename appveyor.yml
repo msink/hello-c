@@ -1,0 +1,51 @@
+version: 1.0.{build}-{branch}
+
+os:
+  - Visual Studio 2015 Update 3
+
+platform:
+  - x64
+
+build:
+  verbosity: detailed
+
+environment:
+  matrix:
+    - compiler: msvc
+      bit: 32
+    - compiler: msvc
+      bit: 64
+    - compiler: mingw
+      bit: 32
+    - compiler: mingw
+      bit: 64
+
+# scripts that run after cloning repository
+install:
+  ############################################################################
+  # Install Ninja
+  ############################################################################
+  - ninja --version
+  - appveyor DownloadFile "https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip"
+  - 7z x ninja-win.zip -oC:\Utils\ninja > nul
+  - set PATH=C:\Utils\ninja;%PATH%
+  - ninja --version
+
+  ############################################################################
+  # Install Meson
+  ############################################################################
+  - meson --version
+  - set set PYTHON_HOME=C:\python35-x64
+  - set PATH=%PYTHON_HOME%;%PATH%
+  - pip3 install meson
+  - meson --version
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+  - '%APPVEYOR_BUILD_FOLDER%\appveyor.bat'
+
+# to disable automatic tests
+test: off
+
+# to disable deployment
+deploy: off
