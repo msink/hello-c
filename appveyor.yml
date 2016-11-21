@@ -22,13 +22,13 @@ environment:
 
 # scripts that run after cloning repository
 install:
-  - dir
-  
   ############################################################################
   # Install Ninja
   ############################################################################
+  - dir
   - ps: Start-FileDownload 'https://dl.dropboxusercontent.com/u/37517477/ninja.exe'
   - ninja --version
+  - dir
 
   ############################################################################
   # Install Meson
