@@ -1,7 +1,7 @@
-echo
+echo.
 echo Compiler: %compiler%
 echo Bits: %bit%
-echo
+echo.
 
 set "PATH=%PATH%;C:\msys64\usr\bin"
 set build=build\%compiler%-%bit%
