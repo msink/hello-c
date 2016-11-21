@@ -2,8 +2,8 @@
 echo Compiler: %compiler%
 echo Bits: %bit%
 
-SET PATH=C:\msys64\usr\bin;%PATH%
-SET build=build\%compiler%-%bit%
+set PATH=%PATH%;C:\msys64\usr\bin
+set build=build\%compiler%-%bit%
 mkdir %build%
 
 if %compiler%==mingw (
