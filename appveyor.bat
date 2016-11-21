@@ -16,12 +16,12 @@ if %compiler%==mingw (
   if %bit%==32 (
     call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64_x86
     meson %build% --backend vs2015
-    type %build%\hello.sln /p:Configuration=Debug /p:Platform=x64
+    type %build%\hello.sln /p:Configuration=Debug /p:Platform=Win32
     MSBuild %build%\hello.sln
   ) else if %bit%==64 (
     call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
     meson %build% --backend vs2015
-    type %build%\hello.sln /p:Configuration=Debug /p:Platform=Win32
+    type %build%\hello.sln /p:Configuration=Debug /p:Platform=x64
     MSBuild %build%\hello.sln
   )
   file %build%\hello
