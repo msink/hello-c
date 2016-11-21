@@ -19,8 +19,8 @@ environment:
 
 # scripts that run after cloning repository
 install:
-  - set PYTHON_HOME=C:\Python35-x64
-  - set PATH=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%PATH%
+  - set "PYTHON_HOME=C:\Python35-x64"
+  - set "PATH=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%PATH%"
   - pip3 install meson
   - meson --version
   - cinst ninja
