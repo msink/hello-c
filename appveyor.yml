@@ -25,15 +25,12 @@ install:
   ############################################################################
   # Install Ninja
   ############################################################################
-  - appveyor DownloadFile "https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip"
-  - 7z x ninja-win.zip -oC:\Utils\ninja > nul
-  - set PATH=C:\Utils\ninja;%PATH%
+  - appveyor DownloadFile "https://dl.dropboxusercontent.com/u/37517477/ninja.exe"
   - ninja --version
 
   ############################################################################
   # Install Meson
   ############################################################################
-  - meson --version
   - set set PYTHON_HOME=C:\python35-x64
   - set PATH=%PYTHON_HOME%;%PATH%
   - pip3 install meson
