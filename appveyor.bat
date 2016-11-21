@@ -15,7 +15,7 @@ if %compiler%==mingw (
   @echo on
   if %bit%==32 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
   if %bit%==64 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
-  meson %build% --backend msvc2015
+  meson %build% --backend vs2015
   dir %build%
   rem MSBuild
 )
