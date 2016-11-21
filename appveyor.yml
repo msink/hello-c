@@ -6,9 +6,6 @@ os:
 platform:
   - x64
 
-build:
-  verbosity: detailed
-
 environment:
   matrix:
     - compiler: msvc
