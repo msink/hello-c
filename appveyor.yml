@@ -25,11 +25,10 @@ install:
   ############################################################################
   # Install Meson
   ############################################################################
-  - dir C:\
-  - set set PYTHON_HOME=C:\python35-x64
+  - set set PYTHON_HOME=c:\Python35-x64
+  - set PATH=%PYTHON_HOME%\bin;%PATH%
   - python --version
   - dir -R %PYTHON_HOME%
-  - set PATH=%PYTHON_HOME%;%PATH%
   - pip3 install meson
   - meson --version
 
