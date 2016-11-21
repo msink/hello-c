@@ -1,13 +1,12 @@
 echo Compiler: %compiler%
 echo Bits: %bit%
 
-set PATH=%PATH%;C:\msys64\usr\bin
+set "PATH=%PATH%;C:\msys64\usr\bin"
 set build=build\%compiler%-%bit%
 mkdir %build%
-dir %build%
 
 if %compiler%==mingw (
-  SET PATH=C:\msys64\mingw%bit%\bin;%PATH%
+  set "PATH=C:\msys64\mingw%bit%\bin;%PATH%"
   meson %build%
   ninja -C %build%
   file %build%\hello
