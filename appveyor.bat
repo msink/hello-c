@@ -21,6 +21,7 @@ if %compiler%==mingw (
     echo amd64
   )
   meson %build% --backend vs2015
+  type %build%\hello.sln
   MSBuild %build%\hello.sln
   file %build%\hello
   %build%\hello
