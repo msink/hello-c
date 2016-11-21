@@ -1,7 +1,6 @@
 version: 1.0.{build}-{branch}
 
-os:
-  - Visual Studio 2015
+os: Visual Studio 2015
 
 platform:
   - x64
@@ -17,17 +16,14 @@ environment:
     - compiler: mingw
       bit: 64
 
-# scripts that run after cloning repository
-install:
+# scripts that are called at very beginning, before repo cloning
+init:
   - set "PYTHON_HOME=C:\Python35-x64"
   - set "PATH=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%PATH%"
   - pip3 install meson
   - meson --version
   - cinst ninja
   - ninja --version
-
-# scripts to run before build
-before_build:
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
 
 # to run your custom scripts instead of automatic MSBuild
