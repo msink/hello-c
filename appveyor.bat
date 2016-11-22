@@ -30,5 +30,9 @@ if %Compiler%-%Platform%==mingw-x86 (
   MSBuild %build%\hello.sln /p:Configuration=%Configuration% /p:Platform=x64
 )
 
-file %build%\hello
+if %Configuration%==release (strip %build%\hello.exe)
+echo.
+file %build%\hello.exe
+size %build%\hello.exe
+echo.
 %build%\hello
