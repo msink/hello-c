@@ -9,6 +9,8 @@ set "PATH=%PATH%;C:\msys64\usr\bin"
 set build=build\%Compiler%-%Platform%-%Configuration%
 mkdir %build%
 
+where vcpkg
+
 if %Compiler%-%Platform%==mingw-x86 (
   set "PATH=C:\msys64\mingw32\bin;%PATH%"
   meson %build% --backend ninja --buildtype %Configuration%
