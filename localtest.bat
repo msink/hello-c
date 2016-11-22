@@ -1,11 +1,14 @@
 rem script for local testing
 
-for %%c in (mingw,msvc) do (
-  for %%b in (32,64) do (
-    setlocal
-    set compiler=%%c
-    set bit=%%b
-    call appveyor.bat
-    endlocal
+for %%t in (mingw,msvc) do (
+  for %%p in (x86,x64) do (
+    for %%c in (debug,release) do (
+      setlocal
+      set Compiler=%%t
+      set Platform=%%p
+      set Configuration=%%c
+      call appveyor.bat
+      endlocal
+    )
   )
 )

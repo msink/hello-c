@@ -2,6 +2,11 @@ version: 1.0.{build}-{branch}
 
 os: Visual Studio 2015
 
+environment:
+  matrix:
+    - Compiler: msvc
+    - Compiler: mingw
+
 platform:
   - x86
   - x64
@@ -9,17 +14,6 @@ platform:
 configuration:
   - debug
   - release
-
-environment:
-  matrix:
-    - compiler: msvc
-      bit: 32
-    - compiler: msvc
-      bit: 64
-    - compiler: mingw
-      bit: 32
-    - compiler: mingw
-      bit: 64
 
 # scripts that are called at very beginning, before repo cloning
 init:
