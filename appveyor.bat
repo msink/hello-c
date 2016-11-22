@@ -33,6 +33,7 @@ if %Compiler%-%Platform%==mingw-x86 (
 if %Configuration%==release (strip %build%\hello.exe)
 echo.
 file %build%\hello.exe
+wc -c %build%\hello.exe
 size %build%\hello.exe
 echo.
 %build%\hello
