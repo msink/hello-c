@@ -5,14 +5,6 @@ echo Platform: %Platform%
 echo Configuration: %Configuration%
 echo.
 
-echo.
-dir c:\
-dir "c:\Program Files\"
-dir "c:\Program Files (x86)\"
-dir "c:\Libraries\"
-dir "c:\Tools\"
-echo.
-
 set "PATH=%PATH%;C:\msys64\usr\bin"
 set build=build\%Compiler%-%Platform%-%Configuration%
 mkdir %build%
