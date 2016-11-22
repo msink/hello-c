@@ -22,7 +22,7 @@ if %Compiler%-%Platform%==mingw-x86 (
 ) else if %Compiler%-%Platform%==msvc-x86 (
   call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64_x86
   meson %build% --backend vs2015 --buildtype %Configuration%
-  MSBuild %build%\hello.sln
+  MSBuild %build%\hello.sln /p:Platform=Win32
 
 ) else if %Compiler%-%Platform%==msvc-x64 (
   call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
