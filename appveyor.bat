@@ -1,3 +1,4 @@
+@echo off
 echo.
 echo Compiler: %compiler%
 echo Bits: %bit%
