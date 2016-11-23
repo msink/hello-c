@@ -1,5 +1,7 @@
 rem script for local testing
 
+chcp 65001
+
 for %%t in (mingw,msvc) do (
   for %%p in (x86,x64) do (
     for %%c in (debug,release) do (
