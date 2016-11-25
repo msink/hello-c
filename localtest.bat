@@ -1,16 +1,15 @@
 rem script for local testing
+@echo off
 
 chcp 65001
 
-for %%t in (mingw,msvc) do (
+for %%t in (msvc,mingw) do (
   for %%p in (x86,x64) do (
     for %%c in (debug,release) do (
-      setlocal
       set Compiler=%%t
       set Platform=%%p
       set Configuration=%%c
       call appveyor.bat
-      endlocal
     )
   )
 )

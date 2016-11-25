@@ -1,4 +1,5 @@
 @echo off
+setlocal
 echo.
 echo Compiler: %Compiler%
 echo Platform: %Platform%
@@ -31,6 +32,7 @@ if %Compiler%-%Platform%==mingw-x86 (
 )
 
 if %Configuration%==release (strip %build%\hello.exe)
+
 echo.
 file %build%\hello.exe
 wc -c %build%\hello.exe
