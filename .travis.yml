@@ -1,12 +1,9 @@
-sudo: false
-
 language: cpp
 
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-
     packages:
       - python3
       - python3-setuptools # easy_install3
@@ -21,8 +18,8 @@ matrix:
 install:
   - uname -a
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
-  - where python
-  - python --version
+  - gcc --version
+  - python3 --version
 
 script:
   - uname -a
