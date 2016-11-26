@@ -34,7 +34,7 @@ test: off
 
 # scripts to run after build
 after_build:
-  - 7z a hello-%platform%-%compiler%.zip %APPVEYOR_BUILD_FOLDER%\build\*\hello.exe
+  - 7z a hello-windows-%Platform%-%Compiler%.zip %APPVEYOR_BUILD_FOLDER%\build\%Compiler%-%Platform%-release\hello.exe
 
 # artifacts configuration
 artifacts:
