@@ -7,7 +7,6 @@ echo Configuration: %Configuration%
 echo.
 
 set "PATH=%PATH%;C:\msys64\usr\bin"
-set build=build\%Compiler%-%Platform%-%Configuration%
 
 if %Compiler%-%Platform%==mingw-x86 (
   set "PATH=C:\msys64\mingw32\bin;%PATH%"
