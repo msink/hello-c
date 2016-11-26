@@ -39,7 +39,7 @@ after_build:
 
 # artifacts configuration
 artifacts:
-  - path: build\*\hello-*.zip
+  - path: %build%\hello-*.zip
 
 # Deploy to GitHub Releases
 deploy:
