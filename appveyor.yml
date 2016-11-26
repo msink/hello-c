@@ -32,17 +32,20 @@ build_script:
 # to disable automatic tests
 test: off
 
+# scripts to run after build
+after_build:
+  - 7z a hello-%platform%-%compiler%.zip %APPVEYOR_BUILD_FOLDER%\build\*\hello.exe
+
 # artifacts configuration
 artifacts:
-  - path: build\*\hello.exe
-    name: Releases
+  - path: hello-*.zip
 
 # Deploy to GitHub Releases
 deploy:
   provider: GitHub
   auth_token:
     secure: "2l/602m6FkqAB9TTIAkPX3Erfwg9jVTlf/Inmf2dWcbOrJJzK/WrCUIgY3B4ngly"
-  artifact: /hello.exe/
+  artifact: /hello-*.zip/
   draft: false
   prerelease: false
   on:
