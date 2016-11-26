@@ -34,11 +34,11 @@ test: off
 
 # scripts to run after build
 after_build:
-  - 7z a hello-windows-%Platform%-%Compiler%.zip %APPVEYOR_BUILD_FOLDER%\build\%Compiler%-%Platform%-release\hello.exe
+  - pushd build\* && 7z a hello-windows-%Platform%-%Compiler%.zip hello.exe && popd
 
 # artifacts configuration
 artifacts:
-  - path: hello-*.zip
+  - path: build\*\hello-*.zip
 
 # Deploy to GitHub Releases
 deploy:
