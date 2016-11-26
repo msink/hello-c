@@ -27,6 +27,7 @@ init:
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
+  - set build=build
   - appveyor.bat
 
 # to disable automatic tests
