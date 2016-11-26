@@ -1,0 +1,30 @@
+sudo: false
+
+language: cpp
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+
+    packages:
+      - python3
+      - python3-setuptools # easy_install3
+      - libstdc++-4.8-dev
+      - g++-4.8
+
+matrix:
+  include:
+    - os: linux
+    - os: osx
+
+install:
+  - uname -a
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
+  - where python
+  - python --version
+
+script:
+  - uname -a
+
+
