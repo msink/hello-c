@@ -45,7 +45,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: "2l/602m6FkqAB9TTIAkPX3Erfwg9jVTlf/Inmf2dWcbOrJJzK/WrCUIgY3B4ngly"
-  artifact: /hello-*.zip/
+  artifact: hello-*.zip
   draft: false
   prerelease: false
   on:
