@@ -35,7 +35,7 @@ test: off
 
 # scripts to run after build
 after_build:
-  - pushd build\%Compiler%-%Platform%-%Configuration% && 7z a hello-windows-%Platform%-%Compiler%.zip hello.exe && popd
+  - pushd %build% && 7z a hello-windows-%Platform%-%Compiler%.zip hello.exe && popd
 
 # artifacts configuration
 artifacts:
