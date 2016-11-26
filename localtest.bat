@@ -9,6 +9,7 @@ for %%t in (msvc,mingw) do (
       set Compiler=%%t
       set Platform=%%p
       set Configuration=%%c
+      set build=build\%Compiler%-%Platform%-%Configuration%
       call appveyor.bat
     )
   )
