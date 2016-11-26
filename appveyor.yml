@@ -29,13 +29,10 @@ init:
 build_script:
   - set build=build
   - appveyor.bat
+  - pushd build && 7z a hello-windows-%Platform%-%Compiler%.zip hello.exe && popd
 
 # to disable automatic tests
 test: off
-
-# scripts to run after build
-after_build:
-  - pushd build && 7z a hello-windows-%Platform%-%Compiler%.zip hello.exe && popd
 
 # artifacts configuration
 artifacts:
