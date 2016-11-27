@@ -37,10 +37,14 @@ test: off
 # artifacts configuration
 artifacts:
   - path: build\hello-*.zip
+    name: build
 
 # Deploy to GitHub Releases
 deploy:
   provider: GitHub
+  tag: $(APPVEYOR_REPO_TAG_NAME)
+  description: 'v$(APPVEYOR_REPO_TAG_NAME)'
+  artifact: build
   auth_token:
     secure: "2l/602m6FkqAB9TTIAkPX3Erfwg9jVTlf/Inmf2dWcbOrJJzK/WrCUIgY3B4ngly"
   draft: false
