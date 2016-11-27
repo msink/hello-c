@@ -1,3 +1,4 @@
+language: cpp
 sudo: false
 group: beta
 
@@ -7,25 +8,16 @@ matrix:
       dist: trusty
     - os: osx
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-5
-
-before_install:
+install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python3 ninja; fi
-
-install:
-  - uname -a
+  - pip3 install meson
 
 script:
   - uname -a
   - gcc --version
-  - python3 --version
-  - pip3 --version
+  - meson --version
+  - ninja --version
 
 
 
