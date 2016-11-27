@@ -29,7 +29,7 @@ init:
 build_script:
   - set build=build
   - appveyor.bat
-  - pushd build && 7z a hello-windows-%Platform%-%Compiler%.zip hello.exe && popd
+  - pushd build && if %Platform%==x64 (7z a hello-windows64-%Compiler%.zip hello.exe) else ((7z a hello-windows-%Compiler%.zip hello.exe)) && popd
 
 # to disable automatic tests
 test: off
