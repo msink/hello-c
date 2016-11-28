@@ -4,7 +4,7 @@ os: Visual Studio 2015
 
 environment:
   matrix:
-    - Compiler: msvc
+    - Compiler: msvc2015
     - Compiler: mingw
 
 platform:
