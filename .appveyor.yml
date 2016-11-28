@@ -5,6 +5,7 @@ os: Visual Studio 2015
 environment:
   matrix:
     - Compiler: msvc2015
+    - Compiler: msvc2015-ninja
     - Compiler: mingw
 
 platform:

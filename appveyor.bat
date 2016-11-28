@@ -33,12 +33,29 @@ if %Compiler%-%Platform%==mingw-x86 (
   MSBuild %build%\hello.sln /verbosity:minimal /p:Platform=Win32 || exit /b
 
 ) else if %Compiler%-%Platform%==msvc2015-x64 (
-  call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86_amd64
+  call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
   if not exist %build% (
     mkdir %build%
     meson %build% --backend vs2015 --buildtype %Configuration% || exit /b
   )
   MSBuild %build%\hello.sln /verbosity:minimal || exit /b
+
+) else if %Compiler%-%Platform%==msvc2015-ninja-x86 (
+  call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86
+  if not exist %build% (
+    mkdir %build%
+    meson %build% --backend ninja --buildtype %Configuration% || exit /b
+  )
+  ninja -C %build% || exit /b
+
+) else if %Compiler%-%Platform%==msvc2015-ninja-x64 (
+  call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
+  if not exist %build% (
+    mkdir %build%
+    meson %build% --backend ninja --buildtype %Configuration% || exit /b
+  )
+  ninja -C %build% || exit /b
+
 )
 
 if %Configuration%==release (strip %build%\hello.exe)
