@@ -9,5 +9,15 @@ else
   zlib = dependency('zlib', static: true)
 endif
 
-exe = executable('hello', sources: 'hello.c',
+if target_machine.system() == 'windows'
+  link_args = ['-static']
+else
+  link_args = []
+endif
+
+exe = executable('hello',
+  sources: [
+    'hello.c',
+  ],
+  link_args: link_args,
   dependencies: zlib)
