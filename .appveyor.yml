@@ -4,9 +4,9 @@ os: Visual Studio 2015
 
 environment:
   matrix:
-    - Compiler: msvc2015
-    - Compiler: msvc2015-ninja
-    - Compiler: mingw
+    - compiler: msvc2015
+    - compiler: msvc2015-ninja
+    - compiler: mingw
 
 platform:
   - x86
@@ -30,7 +30,11 @@ init:
 build_script:
   - set build=build
   - appveyor.bat
-  - pushd build && if %Platform%==x64 (7z a hello-windows64-%Compiler%.zip hello.exe) else ((7z a hello-windows-%Compiler%.zip hello.exe)) && popd
+  - pushd build && if %platform%==x64 (
+      7z a hello-windows64-%compiler%.zip hello.exe
+    ) else (
+      7z a hello-windows-%compiler%.zip hello.exe
+    ) && popd
 
 # to disable automatic tests
 test: off
