@@ -33,19 +33,15 @@ init:
 build_script:
   - set build=build
   - appveyor.bat
-  - cd build
-  - if %platform%==x86 (
+  - cd build && if %platform%==x86 (
       7z a hello-%compiler%-%backend%-windows.zip hello.exe
     ) else (
       7z a hello-%compiler%-%backend%-windows64.zip hello.exe
-    )
-  - cd ..
-  - dir
+    ) && cd ..
 
 # to run your custom scripts instead of automatic tests
 test_script:
-  - dir
-  - build\hello.exe
+  - build\hello
 
 # artifacts configuration
 artifacts:
