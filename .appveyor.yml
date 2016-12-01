@@ -39,8 +39,9 @@ build_script:
       7z a hello-%compiler%-%backend%-windows64.zip hello.exe
     ) && popd
 
-# to disable automatic tests
-test: off
+# to run your custom scripts instead of automatic tests
+test_script:
+  - build/hello
 
 # artifacts configuration
 artifacts:
