@@ -1,4 +1,5 @@
-project('hello', ['c'], default_options: [
+project('hello', ['c'], license: 'Apache'
+default_options: [
   'warning_level=2',
   'default_library=static',
 ])
@@ -6,7 +7,7 @@ project('hello', ['c'], default_options: [
 if meson.get_compiler('c').get_id() == 'msvc'
   zlib = subproject('zlib').get_variable('zlib_dep')
 else
-  zlib = dependency('zlib', static: true)
+  zlib = dependency('zlib')
 endif
 
 if target_machine.system() == 'windows'
@@ -16,8 +17,6 @@ else
 endif
 
 exe = executable('hello',
-  sources: [
-    'hello.c',
-  ],
+  sources: 'hello.c',
   link_args: link_args,
   dependencies: zlib)
