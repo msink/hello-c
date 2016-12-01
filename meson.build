@@ -1,4 +1,4 @@
-project('hello', ['c'], license: 'Apache'
+project('hello', ['c'], license: 'Apache',
 default_options: [
   'warning_level=2',
   'default_library=static',
