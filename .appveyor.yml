@@ -41,7 +41,8 @@ build_script:
 
 # to run your custom scripts instead of automatic tests
 test_script:
-  - build\hello
+  - dir
+  - build\hello.exe
 
 # artifacts configuration
 artifacts:
