@@ -1,7 +1,9 @@
 @echo off
-if %backend%-%compiler%-%platform%-%configuration%==--- (echo run localtest.bat! && exit /b)
-
 setlocal
+if %backend%-%compiler%-%platform%-%configuration%==--- (
+  echo run localtest.bat! && exit /b
+)
+
 echo.
 echo Backend: %backend%
 echo Compiler: %compiler%
