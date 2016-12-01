@@ -33,11 +33,11 @@ init:
 build_script:
   - set build=build
   - appveyor.bat
-  - cd build && if %platform%==x86 (
-      7z a hello-%compiler%-%backend%-windows.zip hello.exe
+  - if %platform%==x86 (
+      pushd build && 7z a hello-%compiler%-%backend%-windows.zip hello.exe && popd
     ) else (
-      7z a hello-%compiler%-%backend%-windows64.zip hello.exe
-    ) && cd ..
+      pushd build && 7z a hello-%compiler%-%backend%-windows64.zip hello.exe && popd
+    )
 
 # to run your custom scripts instead of automatic tests
 test_script:
