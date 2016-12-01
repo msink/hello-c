@@ -16,11 +16,7 @@ if %compiler%==mingw (
   )
 
 ) else if %compiler%==msvc2015 (
-  if %platform%==x86 (
-    call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x86
-  ) else (
-    call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
-  )
+  call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" %platform%
 )
 
 if not exist %build% (
