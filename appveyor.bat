@@ -5,7 +5,7 @@ if %compiler%-%platform%-%configuration%==-- (
 )
 echo.
 echo Compiler: %compiler%
-echo Platform: %platform%
+echo Platform: %platform% bit
 echo Buildtype: %configuration%
 echo.
 
@@ -13,6 +13,8 @@ if %compiler%==mingw (
   set "PATH=C:\msys64\mingw%platform%\bin;%PATH%"
 ) else if not %compiler:linux-=%==%compiler% (
   set "PATH=C:\cygwin64\bin;%PATH%"
+  c:\cygwin64\bin\bash -lc "ls -l /"
+  c:\cygwin64\bin\bash -lc "ls -l /bin"
 ) else if %platform%==32 (
   call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64_x86
 ) else (
