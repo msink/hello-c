@@ -26,12 +26,7 @@ init:
   - meson --version
   - cinst ninja
   - ninja --version
-  - if not %compiler:linux-=%==%compiler% (
-      pushd c:\cygwin64;
-      wget https://github.com/msink/cygwin-linux-gcc/blob/master/%compiler%-%platform%.tar.xz;
-      c:\cygwin64\bin\bash -lc "tar xJf %compiler%-%platform%.tar.xz"';
-      popd
-    )
+  - if not %compiler:linux-=%==%compiler% (echo %compiler%-%platform%.tar.xz)
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
 
 # to run your custom scripts instead of automatic MSBuild

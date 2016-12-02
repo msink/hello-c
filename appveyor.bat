@@ -5,8 +5,8 @@ if %compiler%-%platform%-%configuration%==-- (
 )
 echo.
 echo Compiler: %compiler%
-echo Buildtype: %configuration%
 echo Platform: %platform%
+echo Buildtype: %configuration%
 echo.
 
 if %compiler%==mingw (
