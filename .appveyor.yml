@@ -4,11 +4,11 @@ os: Visual Studio 2015
 
 environment:
   matrix:
+    - Compiler: linux-gcc
+    - Compiler: linux-arm-gcc
     - Compiler: mingw
     - Compiler: msvc2015
     - Compiler: msvc2015-msbuild
-    - Compiler: linux-gcc
-    - Compiler: linux-arm-gcc
 
 platform:
   - 32
@@ -27,9 +27,9 @@ init:
   - cinst ninja
   - ninja --version
   - if not %compiler:linux-=%==%compiler% (
-      pushd c:\cygwin64
-      wget https://github.com/msink/cygwin-linux-gcc/blob/master/%compiler%-%platform%.tar.xz
-      c:\cygwin64\bin\bash -lc "tar xJf %compiler%-%platform%.tar.xz"'
+      pushd c:\cygwin64;
+      wget https://github.com/msink/cygwin-linux-gcc/blob/master/%compiler%-%platform%.tar.xz;
+      c:\cygwin64\bin\bash -lc "tar xJf %compiler%-%platform%.tar.xz"';
       popd
     )
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
