@@ -1,36 +1,34 @@
 @echo off
 setlocal
-if %backend%-%compiler%-%platform%-%configuration%==--- (
+if %compiler%-%platform%-%configuration%==-- (
   echo run localtest.bat! && exit /b
 )
-
 echo.
-echo Backend: %backend%
 echo Compiler: %compiler%
-echo Platform: %platform%
 echo Buildtype: %configuration%
+echo Platform: %platform%
 echo.
 
 if %compiler%==mingw (
-  if not %backend%==ninja (echo [skip] && exit /b)
-  if %platform%==x86 (
-    set "PATH=C:\msys64\mingw32\bin;%PATH%"
-  ) else (
-    set "PATH=C:\msys64\mingw64\bin;%PATH%"
-  )
-
-) else if %compiler%==msvc2015 (
-  call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" %platform%
+  set "PATH=C:\msys64\mingw%platform%\bin;%PATH%"
+) else if %platform%==32 (
+  call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64_x86
+) else (
+  call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
 )
 
 if not exist %build% (
   mkdir %build%
-  meson %build% --backend %backend% --buildtype %configuration% || exit /b
+  if "%compiler:-msbuild=%"=="%compiler%" (
+    meson %build% --buildtype %configuration% || exit /b
+  ) else (
+    meson %build% --buildtype %configuration% --backend vs2015 || exit /b
+  )
 )
 
-if %backend%==ninja (
+if "%compiler:-msbuild=%"=="%compiler%" (
   ninja -C %build% || exit /b
-) else if %platform%==x86 (
+) else if %platform%==X86 (
   MSBuild %build%\hello.sln /verbosity:minimal /p:Platform=Win32 || exit /b
 ) else (
   MSBuild %build%\hello.sln /verbosity:minimal || exit /b
