@@ -13,8 +13,6 @@ if %compiler%==mingw (
   set "PATH=C:\msys64\mingw%platform%\bin;%PATH%"
 ) else if not %compiler:linux-=%==%compiler% (
   set "PATH=C:\cygwin64\bin;%PATH%"
-  c:\cygwin64\bin\bash -lc "ls -l /usr/i686-pc-linux-gnu/sys-root/usr/lib/pkgconfig"
-  c:\cygwin64\bin\bash -lc "cat /usr/i686-pc-linux-gnu/sys-root/usr/lib/pkgconfig/zlib.pc"
 ) else if %platform%==32 (
   call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64_x86
 ) else (
