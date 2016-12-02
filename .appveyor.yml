@@ -4,9 +4,11 @@ os: Visual Studio 2015
 
 environment:
   matrix:
-    - compiler: mingw
-    - compiler: msvc2015
-    - compiler: msvc2015-msbuild
+    - Compiler: mingw
+    - Compiler: msvc2015
+    - Compiler: msvc2015-msbuild
+    - Compiler: linux-gcc
+    - Compiler: linux-arm-gcc
 
 platform:
   - 32
@@ -24,17 +26,27 @@ init:
   - meson --version
   - cinst ninja
   - ninja --version
+  - if not %compiler:linux-=%==%compiler% (
+      pushd c:\cygwin64
+      wget https://github.com/msink/cygwin-linux-gcc/blob/master/%compiler%-%platform%.tar.xz
+      c:\cygwin64\bin\bash -lc "tar xJf %compiler%-%platform%.tar.xz"'
+      popd
+    )
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - set build=build
   - appveyor.bat
-  - pushd build && 7z a hello-windows-%compiler%-%platform%.zip hello.exe && popd
+  - if not %compiler:linux-=%==%compiler% (
+      pushd build && 7z a hello-%compiler%-%platform%.zip hello && popd
+    ) else (
+      pushd build && 7z a hello-windows-%compiler%-%platform%.zip hello.exe && popd
+    )
 
 # to run your custom scripts instead of automatic tests
 test_script:
-  - build\hello
+  - echo build\hello
 
 # artifacts configuration
 artifacts:

@@ -1,14 +1,24 @@
-rem script for local testing
+rem script for local testing on windows
 @echo off
 chcp 65001
 
-for %%t in (mingw,msvc2015,msvc2015-msbuild) do (
-  for %%c in (debug,release) do (
-    for %%p in (32,64) do (
+set "PATH=%PATH:C:\cygwin64\bin;=%"
+set "PATH=%PATH:C:\msys64\usr\bin;=%"
+set "PATH=%PATH:C:\msys64\mingw64\bin;=%"
+set "PATH=%PATH:C:\msys64\mingw32\bin;=%"
+
+for %%t in (^
+mingw,^
+msvc2015,^
+msvc2015-msbuild,^
+linux-gcc,^
+linux-arm-gcc) do (
+  for %%p in (32,64) do (
+    for %%c in (debug,release) do (
       set compiler=%%t
-      set configuration=%%c
       set platform=%%p
-      set build=build\%%t-%%c-%%p
+      set configuration=%%c
+      set build=build\%%t-%%p-%%c
       call appveyor.bat
       if ERRORLEVEL 1 pause
     )
