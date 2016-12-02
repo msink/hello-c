@@ -4,7 +4,7 @@ default_options: [
   'default_library=static',
 ])
 
-if meson.get_compiler('c').get_id() == 'msvc'
+if meson.get_compiler('c').get_id() == 'msvc' or meson.is_cross_build()
   zlib = subproject('zlib').get_variable('zlib_dep')
 else
   zlib = dependency('zlib')
