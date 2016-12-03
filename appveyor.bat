@@ -9,10 +9,10 @@ echo Platform: %platform% bit
 echo Buildtype: %configuration%
 echo.
 
-if %compiler%==mingw (
-  set "PATH=C:\msys64\mingw%platform%\bin;%PATH%"
-) else if not %compiler:linux-=%==%compiler% (
+if %compiler:windows-=%==%compiler% (
   set "PATH=C:\cygwin64\bin;%PATH%"
+) else if %compiler%==windows-mingw (
+  set "PATH=C:\msys64\mingw%platform%\bin;%PATH%"
 ) else if %platform%==32 (
   call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" amd64_x86
 ) else (
@@ -21,12 +21,12 @@ if %compiler%==mingw (
 
 if not exist %build% (
   mkdir %build%
-  if not %compiler:linux-=%==%compiler% (
+  if %compiler:windows-=%==%compiler% (
     meson %build% --buildtype %configuration% --cross-file compilers\%compiler%-%platform%.txt || exit /b
-  ) else if %compiler:-msbuild=%==%compiler% (
-    meson %build% --buildtype %configuration% || exit /b
-  ) else (
+  ) else if not %compiler:-msbuild=%==%compiler% (
     meson %build% --buildtype %configuration% --backend vs2015 || exit /b
+  ) else (
+    meson %build% --buildtype %configuration% || exit /b
   )
 )
 
@@ -38,12 +38,12 @@ if %compiler:-msbuild=%==%compiler% (
   MSBuild %build%\hello.sln /verbosity:minimal || exit /b
 )
 
-if %compiler%-%configuration%==mingw-release (
+if %compiler%-%configuration%==windows-mingw-release (
   C:\msys64\usr\bin\strip %build%\hello.exe
 )
 
 echo.
-if %compiler:linux-=%==%compiler% (
+if not %compiler:windows-=%==%compiler% (
   C:\msys64\usr\bin\file  %build%\hello.exe
   C:\msys64\usr\bin\wc -c %build%\hello.exe
   C:\msys64\usr\bin\size  %build%\hello.exe
