@@ -4,12 +4,12 @@ os: Visual Studio 2015
 
 environment:
   matrix:
+    - Compiler: windows-mingw
+    - Compiler: windows-msvc2015
+    - Compiler: windows-msvc2015-msbuild   
     - Compiler: linux-gcc
     - Compiler: linux-arm-gcc
-    - Compiler: mingw
-    - Compiler: msvc2015
-    - Compiler: msvc2015-msbuild
-
+  
 platform:
   - 32
   - 64
@@ -26,17 +26,17 @@ init:
   - meson --version
   - cinst ninja
   - ninja --version
-  - if not %compiler:linux-=%==%compiler% (pushd c:\cygwin64 && appveyor DownloadFile https://github.com/msink/cygwin-linux-gcc/raw/master/%compiler%-%platform%.tar.xz && c:\cygwin64\bin\bash -lc "tar xJf /%compiler%-%platform%.tar.xz -C /"' && popd)
+  - if %compiler:windows-=%==%compiler% (pushd c:\cygwin64 && appveyor DownloadFile https://github.com/msink/cygwin-linux-gcc/raw/master/%compiler%-%platform%.tar.xz && c:\cygwin64\bin\bash -lc "tar xJf /%compiler%-%platform%.tar.xz -C /"' && popd)
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - set build=build
   - appveyor.bat
-  - if not %compiler:linux-=%==%compiler% (
+  - if %compiler:windows-=%==%compiler% (
       pushd build && 7z a hello-%compiler%-%platform%.zip hello && popd
     ) else (
-      pushd build && 7z a hello-windows-%compiler%-%platform%.zip hello.exe && popd
+      pushd build && 7z a hello-%compiler%-%platform%.zip hello.exe && popd
     )
 
 # to run your custom scripts instead of automatic tests
