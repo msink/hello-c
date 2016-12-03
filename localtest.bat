@@ -8,9 +8,9 @@ set "PATH=%PATH:C:\msys64\mingw64\bin;=%"
 set "PATH=%PATH:C:\msys64\mingw32\bin;=%"
 
 for %%t in (^
-mingw,^
-msvc2015,^
-msvc2015-msbuild,^
+windows-mingw,^
+windows-msvc2015,^
+windows-msvc2015-msbuild,^
 linux-gcc,^
 linux-arm-gcc) do (
   for %%p in (32,64) do (
