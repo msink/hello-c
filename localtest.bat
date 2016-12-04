@@ -2,11 +2,6 @@ rem script for local testing on windows
 @echo off
 chcp 65001
 
-set "PATH=%PATH:C:\cygwin64\bin;=%"
-set "PATH=%PATH:C:\msys64\usr\bin;=%"
-set "PATH=%PATH:C:\msys64\mingw64\bin;=%"
-set "PATH=%PATH:C:\msys64\mingw32\bin;=%"
-
 for %%t in (^
 windows-mingw,^
 windows-msvc2015,^

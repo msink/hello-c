@@ -9,7 +9,7 @@ c          = 'c:/cygwin64/bin/i686-pc-linux-gnu-gcc'
 cpp        = 'c:/cygwin64/bin/i686-pc-linux-gnu-g++'
 ar         = 'c:/cygwin64/bin/i686-pc-linux-gnu-ar'
 strip      = 'c:/cygwin64/bin/i686-pc-linux-gnu-strip'
-pkgconfig  = 'c:/cygwin64/bin/pkg-config'
+pkgconfig  = 'c:/cygwin64/bin/i686-pc-linux-gnu-pkg-config'
 
 [properties]
-root       = 'c:/cygwin64/usr/i686-pc-linux-gnu'
+root       = 'c:/cygwin64/usr/i686-pc-linux-gnu/sys-root'

@@ -9,7 +9,7 @@ c          = 'c:/cygwin64/bin/aarch64-unknown-linux-gnu-gcc'
 cpp        = 'c:/cygwin64/bin/aarch64-unknown-linux-gnu-g++'
 ar         = 'c:/cygwin64/bin/aarch64-unknown-linux-gnu-ar'
 strip      = 'c:/cygwin64/bin/aarch64-unknown-linux-gnu-strip'
-pkgconfig  = 'c:/cygwin64/bin/pkg-config'
+pkgconfig  = 'c:/cygwin64/bin/aarch64-unknown-linux-gnu-pkg-config'
 
 [properties]
-root       = 'c:/cygwin64/usr/aarch64-unknown-linux-gnu'
+root       = 'c:/cygwin64/usr/aarch64-unknown-linux-gnu/sys-root'
