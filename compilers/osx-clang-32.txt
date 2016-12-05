@@ -1,0 +1,15 @@
+[host_machine]
+system     = 'linux'
+cpu_family = 'x86'
+cpu        = 'i386'
+endian     = 'little'
+
+[binaries]
+c          = 'c:/cygwin64/bin/i386-apple-darwin14-clang'
+cpp        = 'c:/cygwin64/bin/i386-apple-darwin14-clang++'
+ar         = 'c:/cygwin64/bin/i386-apple-darwin14-ar'
+strip      = 'c:/cygwin64/bin/i386-apple-darwin14-strip'
+pkgconfig  = 'c:/cygwin64/bin/i386-apple-darwin14-pkg-config'
+
+[properties]
+root       = 'c:/cygwin64/usr/SDK/MacOSX10.10.sdk'

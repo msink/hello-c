@@ -4,11 +4,12 @@ os: Visual Studio 2015
 
 environment:
   matrix:
+    - Compiler: osx-clang
+    - Compiler: linux-gcc
+    - Compiler: linux-arm-gcc
     - Compiler: windows-mingw
     - Compiler: windows-msvc2015
     - Compiler: windows-msvc2015-msbuild   
-    - Compiler: linux-gcc
-    - Compiler: linux-arm-gcc
   
 platform:
   - 32
@@ -17,6 +18,12 @@ platform:
 configuration:
   - debug
   - release
+
+# this is how to allow failing jobs in the matrix
+matrix:
+  allow_failures:
+    - compiler: osx-clang
+      configuration: release
 
 # scripts that are called at very beginning, before repo cloning
 init:

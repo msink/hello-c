@@ -21,8 +21,13 @@ if %compiler:windows-=%==%compiler% (
 
 if not exist %build% (
   mkdir %build%
-  if %compiler:windows-=%==%compiler% (
-    meson %build% --buildtype %configuration% --cross-file compilers\%compiler%-%platform%.txt || exit /b
+  if not %compiler:linux-=%==%compiler% (
+    meson %build% --buildtype %configuration% ^
+		--cross-file compilers\%compiler%-%platform%.txt || exit /b
+  ) else if not %compiler:osx-=%==%compiler% (
+    meson %build% --buildtype %configuration% ^
+		--cross-file compilers\%compiler%-%platform%.txt ^
+		-D b_lundef=false -D b_asneeded=false || exit /b
   ) else if not %compiler:-msbuild=%==%compiler% (
     meson %build% --buildtype %configuration% --backend vs2015 || exit /b
   ) else (
@@ -48,6 +53,10 @@ if not %compiler:windows-=%==%compiler% (
   C:\msys64\usr\bin\wc -c %build%\hello.exe
   C:\msys64\usr\bin\size  %build%\hello.exe
   %build%\hello
+) else if not %compiler:osx-=%==%compiler% (
+  C:\msys64\usr\bin\file  %build%\hello
+  C:\msys64\usr\bin\wc -c %build%\hello
+  rem C:\cygwin64\bin\x86_64-apple-darwin14-size %build%\hello
 ) else (
   C:\msys64\usr\bin\file  %build%\hello
   C:\msys64\usr\bin\wc -c %build%\hello
