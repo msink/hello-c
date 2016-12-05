@@ -10,7 +10,7 @@ echo Buildtype: %configuration%
 echo.
 
 if %compiler:windows-=%==%compiler% (
-  set "PATH=C:\cygwin64\bin;%PATH%"
+  set "PATH=C:\cygwin-cross\bin;%PATH%"
 ) else if %compiler%==windows-mingw (
   set "PATH=C:\msys64\mingw%platform%\bin;%PATH%"
 ) else if %platform%==32 (
