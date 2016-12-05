@@ -33,7 +33,9 @@ init:
   - meson --version
   - cinst ninja
   - ninja --version
-  - if %compiler:windows-=%==%compiler% (pushd c:\cygwin64 && appveyor DownloadFile https://github.com/msink/cygwin-cross-tools/raw/master/%compiler%-%platform%.tar.xz && c:\cygwin64\bin\bash -lc "tar xJf /%compiler%-%platform%.tar.xz -C /"' && popd)
+  - if %compiler:windows-=%==%compiler% (pushd c:\cygwin64 && appveyor DownloadFile https://github.com/msink/cygwin-cross-tools/raw/master/%compiler%-%platform%.tar.xz && c:\cygwin64\bin\bash -lc "tar xJf /%compiler%-%platform%.tar.xz -C /" && popd)
+  - c:\cygwin64\bin\bash -lc "ls -l /usr"
+  - c:\cygwin64\bin\bash -lc "ls -l /usr/SDK"
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
 
 # to run your custom scripts instead of automatic MSBuild
