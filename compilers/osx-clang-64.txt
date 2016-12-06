@@ -1,5 +1,5 @@
 [host_machine]
-system='darwin'
+system     = 'darwin'
 cpu_family = 'x86_64'
 cpu        = 'x86_64'
 endian     = 'little'
