@@ -33,14 +33,19 @@ init:
   - meson --version
   - cinst ninja
   - ninja --version
-  - if %compiler:windows-=%==%compiler% (pushd c:\ && appveyor DownloadFile https://github.com/msink/cygwin-cross-tools/raw/master/cygwin-cross.7z && 7z x cygwin-cross.7z && popd)
+  - if %compiler%==%compiler:windows-=% (
+      pushd c:\
+      && appveyor DownloadFile https://github.com/msink/cygwin-cross-tools/raw/master/cygwin-cross.7z
+      && 7z x cygwin-cross.7z
+      && popd
+    )
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - set build=build
   - appveyor.bat
-  - if %compiler:windows-=%==%compiler% (
+  - if %compiler%==%compiler:windows-=% (
       pushd build && 7z a hello-%compiler%-%platform%.zip hello && popd
     ) else (
       pushd build && 7z a hello-%compiler%-%platform%.zip hello.exe && popd
