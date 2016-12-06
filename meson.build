@@ -10,6 +10,8 @@ else
   zlib = dependency('zlib')
 endif
 
+bin2c = subproject('bin2c').get_variable('bin2c')
+
 if target_machine.system() == 'windows'
   link_args = ['-static']
 else
@@ -17,6 +19,9 @@ else
 endif
 
 exe = executable('hello',
-  sources: 'hello.c',
+  sources: [
+    'hello.c',
+    bin2c.process('../../hello.zip', extra_args: ['-n', 'zip_file'])
+  ],
   link_args: link_args,
   dependencies: zlib)
