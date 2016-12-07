@@ -4,6 +4,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/l2r395ew7rv55u7x?svg=true)](https://ci.appveyor.com/project/msink/hello-c)
 
 ## on windows - testing features:
-- cross-compiling
-- dependencies (external / wrap)
-- source generator
+- cross-compiling ([toolcains](https://github.com/msink/cygwin-cross-tools))
+- dependencies (zlib - external/wrap)
+- source generator (bin2c)
