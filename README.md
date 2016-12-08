@@ -9,3 +9,4 @@
 - cross-compiling for linux and osx ([toolcains](https://github.com/msink/cygwin-cross-tools))
 - use dependencies (zlib - external/wrap)
 - use source generator (bin2c)
+- use subprojects (zlib & bin2c)
