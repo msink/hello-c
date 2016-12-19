@@ -1,6 +1,5 @@
 rem script for local testing on windows
 @echo off
-chcp 65001
 
 for %%t in (^
 osx-clang,^
