@@ -35,7 +35,7 @@ init:
   - ninja --version
   - if %compiler%==%compiler:windows-=% (
       pushd c:\
-      && curl -L -o cygwin-cross.7z https://www.dropbox.com/s/v568l2cpxnum7rz/cygwin-cross.7z
+      && curl -fsSL -o cygwin-cross.7z https://www.dropbox.com/s/v568l2cpxnum7rz/cygwin-cross.7z
       && 7z x cygwin-cross.7z
       && popd
     )
