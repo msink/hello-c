@@ -30,8 +30,6 @@ init:
   - set "PYTHON_HOME=C:\Python35-x64"
   - set "PATH=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%PATH%"
   - pip3 install meson
-  - where meson
-  - dir %PYTHON_HOME%\Scripts
   - meson --version
   - cinst ninja
   - ninja --version
