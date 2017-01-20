@@ -9,8 +9,8 @@ environment:
     - Compiler: linux-arm-gcc
     - Compiler: windows-mingw
     - Compiler: windows-msvc2015
-    - Compiler: windows-msvc2015-msbuild   
-  
+    - Compiler: windows-msvc2015-msbuild
+
 platform:
   - 32
   - 64
@@ -40,6 +40,7 @@ init:
       && popd
     )
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+  - c:\msys64\usr\bin\pacman -Q
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
