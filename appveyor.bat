@@ -21,13 +21,8 @@ if %compiler:windows-=%==%compiler% (
 
 if not exist %build% (
   mkdir %build%
-  if not %compiler%==%compiler:linux-=% (
-    meson %build% --buildtype %configuration% ^
-		--cross-file compilers\%compiler%-%platform%.txt || exit /b
-  ) else if not %compiler%==%compiler:osx-=% (
-    meson %build% --buildtype %configuration% ^
-		--cross-file compilers\%compiler%-%platform%.txt ^
-		-D b_lundef=false -D b_asneeded=false || exit /b
+  if %compiler:windows-=%==%compiler% (
+    meson %build% --buildtype %configuration% --cross-file compilers\%compiler%-%platform%.txt || exit /b
   ) else if not %compiler%==%compiler:-msbuild=% (
     meson %build% --buildtype %configuration% --backend vs2015 || exit /b
   ) else (

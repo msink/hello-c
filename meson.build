@@ -1,4 +1,5 @@
 project('hello', ['c'], license: 'Apache',
+meson_version: '>=0.38.0',
 default_options: [
   'warning_level=2',
   'default_library=static',
